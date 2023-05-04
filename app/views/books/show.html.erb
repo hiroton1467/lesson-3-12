@@ -12,7 +12,6 @@
 <p><%= @book.body %></p>
 
 
-<%= link_to "back", books_path %>
-<%= link_to "edit", edit_book_path %>
-<%= link_to "delete", book_path(@book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 
+<%= link_to "Edit", edit_book_path %>
+<%= link_to "Back", books_path %>

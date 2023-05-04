@@ -1,31 +1,42 @@
 <h1>Books</h1>
 
 <% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
+  <%= @book.errors.count %>件のerrorが発生しました
   <ul>
     <% @book.errors.full_messages.each do |message| %>
       <li><%= message %></li>
     <% end %>
   </ul>
   <% end %>
+<boby>
+  <table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
 
-<table>
-<th>Title</th>
-<th>Body</th>
+   <tr>
+    <td><%= book.title %></td>
+    <td><%= book.body %></td>
+
+    <td><%= link_to "Show", book_path(book.id) %></td>
+    <td><%= link_to "Edit", edit_book_path(book.id) %></td>
+    <td><%= link_to "Destroy", book_path(book[:id]), method: :delete, "data-confirm" => "本当に削除しますか？" %></td>
+
+   </tr>
+
+
+    <% end %>
+  </tbody>
 </table>
 
 
 
-<% @books.each do |book| %>
 
-<main>
-<tr><%= book.title %></tr>
-<td><%= book.body %></td>
-<%= link_to "edit", edit_book_path(book.id) %>
-<%= link_to "show", book_path(book.id) %>
-<%= link_to "delete", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-</main>
-<% end %>
 
 <h2>New book<h2>
 
@@ -39,3 +50,5 @@
 
 <%= f.submit 'Create Book' %>
  <% end %>
+
+</body>
